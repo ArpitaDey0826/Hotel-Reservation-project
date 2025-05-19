@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+}
+
+header {
+  background-color: #0077b6;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+.calendar-section {
+  background: white;
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.calendar-section label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.calendar-section input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.calendar-section button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #00b4d8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendar-section button:hover {
+  background-color: #0096c7;
+}
+
+.results {
+  margin-top: 2rem;
+  background: #e0f7fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
