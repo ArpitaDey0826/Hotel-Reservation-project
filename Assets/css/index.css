@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+.header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+}
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.header p {
+    font-size: 1.2em;
+    margin: 10px 0 0;
+}
+.auth-links {
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    padding: 10px 0;
+    text-align: right;
+}
+.auth-links a {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+.auth-links a:hover {
+    background-color: #0056b3;
+}
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.nav-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+.nav-card:hover {
+    transform: translateY(-5px);
+}
+.nav-card a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.nav-card p {
+    color: #666;
+    margin: 10px 0 0;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
+}
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+    .header p {
+        font-size: 1em;
+    }
+    .nav-card {
+        padding: 15px;
+    }
+    .auth-links {
+        position: static;
+        text-align: center;
+        padding: 10px 20px;
+    }
+    .auth-links a {
+        margin: 5px;
+    }
+}

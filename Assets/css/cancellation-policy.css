@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2, h3 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+.policy {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.booking {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.booking p {
+    margin: 5px 0;
+}
+button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #c82333;
+}
+.success {
+    color: green;
+    font-size: 0.9em;
+    display: none;
+    margin-bottom: 15px;
+}
+.back-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}

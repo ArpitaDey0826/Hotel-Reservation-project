@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2, h3 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+.success {
+    color: green;
+    font-size: 0.9em;
+    display: none;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f8f9fa;
+}
+.split-entry {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.split-entry input, .split-entry select {
+    width: 48%;
+    display: inline-block;
+    margin-right: 4%;
+}
+.split-entry input:last-child, .split-entry select:last-child {
+    margin-right: 0;
+}
+.back-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}

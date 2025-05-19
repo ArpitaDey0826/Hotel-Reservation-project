@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2, h3 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    resize: none;
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    display: none;
+}
+.success {
+    color: green;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    display: none;
+}
+.review {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.review p {
+    margin: 5px 0;
+}
+.management-response {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 3px solid #007bff;
+    margin-top: 10px;
+}
+.back-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}
