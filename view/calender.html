@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability Calendar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calendar-container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .rate-viewer {
+            margin-top: 20px;
+        }
+        .stay-duration-selector {
+            margin-top: 20px;
+        }
+        .room-availability {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div id="calendar"></div>
+    </div>
+    <div class="rate-viewer">
+        <h2>Rate Viewer</h2>
+        <table>
+            <tr>
+                <th>Room Type</th>
+                <th>Rate</th>
+            </tr>
+            <tr>
+                <td>Standard</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>Deluxe</td>
+                <td>$150</td>
+            </tr>
+            <tr>
+                <td>Suite</td>
+                <td>$200</td>
+            </tr>
+        </table>
+    </div>
+    <div class="stay-duration-selector">
+        <h2>Stay Duration Selector</h2>
+        <input type="date" id="check-in-date" placeholder="Check-in Date">
+        <input type="date" id="check-out-date" placeholder="Check-out Date">
+        <button id="extend-stay">Extend Stay</button>
+        <button id="shorten-stay">Shorten Stay</button>
+    </div>
+    <div class="room-availability">
+        <h2>Room Availability</h2>
+        <table>
+            <tr>
+                <th>Room Type</th>
+                <th>Availability</th>
+            </tr>
+            <tr>
+                <td>Standard</td>
+                <td>Available</td>
+            </tr>
+            <tr>
+                <td>Deluxe</td>
+                <td>Not Available</td>
+            </tr>
+            <tr>
+                <td>Suite</td>
+                <td>Available</td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    start: 'title', // will normally be on the left. if RTL, will be on the right
+                    end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+                },
+                initialView: 'dayGridMonth',
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                select: function(arg) {
+                    console.log('select', arg.start, arg.end, arg.allDay);
+                },
+                eventClick: function(arg) {
+                    console.log('eventClick', arg.event);
+                }
+            });
+            calendar.render();
+            $('#extend-stay').on('click', function() {
+                var checkOutDate = $('#check-out-date').val();
+                var newCheckOutDate = new Date(checkOutDate);
+                newCheckOutDate.setDate(newCheckOutDate.getDate() + 1);
+                $('#check-out-date').val(newCheckOutDate.toISOString().split('T')[0]);
+            });
+            $('#shorten-stay').on('click', function() {
+                var checkOutDate = $('#check-out-date').val();
+                var newCheckOutDate = new Date(checkOutDate);
+                newCheckOutDate.setDate(newCheckOutDate.getDate() - 1);
+                $('#check-out-date').val(newCheckOutDate.toISOString().split('T')[0]);
+            });
+        });
+    </script>
+</body>
+</html>

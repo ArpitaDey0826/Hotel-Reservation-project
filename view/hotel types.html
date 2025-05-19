@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .room-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+        .room-category {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .room-category img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .filter-form {
+            margin-bottom: 20px;
+        }
+        .filter-form label {
+            margin-right: 10px;
+        }
+        .filter-form input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .compare-amenities {
+            margin-top: 20px;
+        }
+        .compare-amenities table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .compare-amenities th, .compare-amenities td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hotel Reservation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#room-types">Room Types</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="room-types">
+        <h1>Room Types</h1>
+        <form class="filter-form">
+            <label>Filter by amenities:</label>
+            <input type="checkbox" id="wi-fi" name="wi-fi">
+            <label for="wi-fi">Wi-Fi</label>
+            <input type="checkbox" id="tv" name="tv">
+            <label for="tv">TV</label>
+            <input type="checkbox" id="en-suite-bathroom" name="en-suite-bathroom">
+            <label for="en-suite-bathroom">En-suite bathroom</label>
+        </form>
+        <div class="room-gallery">
+            <div class="room-category" data-wi-fi="true" data-tv="true" data-en-suite-bathroom="true">
+                <img src="https://example.com/standard-room.jpg" alt="Standard Room">
+                <h2>Standard</h2>
+                <p>Single bed, en-suite bathroom, TV, and free Wi-Fi</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#standardRoomModal">View 360° Tour</button>
+            </div>
+            <div class="room-category" data-wi-fi="true" data-tv="true" data-en-suite-bathroom="true">
+                <img src="https://example.com/deluxe-room.jpg" alt="Deluxe Room">
+                <h2>Deluxe</h2>
+                <p>Double bed, en-suite bathroom, TV, and free Wi-Fi</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#deluxeRoomModal">View 360° Tour</button>
+            </div>
+            <div class="room-category" data-wi-fi="true" data-tv="true" data-en-suite-bathroom="true">
+                <img src="https://example.com/suite-room.jpg" alt="Suite Room">
+                <h2>Suite</h2>
+                <p>King-size bed, en-suite bathroom, TV, and free Wi-Fi</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#suiteRoomModal">View 360° Tour</button>
+            </div>
+        </div>
+        <div class="compare-amenities">
+            <h2>Compare Amenities</h2>
+            <table>
+                <tr>
+                    <th>Room Type</th>
+                    <th>Wi-Fi</th>
+                    <th>TV</th>
+                    <th>En-suite Bathroom</th>
+                </tr>
+                <tr>
+                    <td>Standard</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>Deluxe</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+                <tr>
+                    <td>Suite</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><i class="fas fa-check"></i></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal fade" id="standardRoomModal" tabindex="-1" role="dialog" aria-labelledby="standardRoomModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="standardRoomModalLabel">Standard Room 360° Tour</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="https://www.example.com/standard-room-360-tour" frameborder="0" width="100%" height="500"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="deluxeRoomModal" tabindex="-1" role="dialog" aria-labelledby="deluxeRoomModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deluxeRoomModalLabel">Deluxe Room 360° Tour</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="https://www.example.com/deluxe-room-360-tour" frameborder="0" width="100%" height="500"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="suiteRoomModal" tabindex="-1" role="dialog" aria-labelledby="suiteRoomModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="suiteRoomModalLabel">Suite Room 360° Tour</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="https://www.example.com/suite-room-360-tour" frameborder="0" width="100%" height="500"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.filter-form input[type="checkbox"]').on('change', function() {
+                var wiFi = $('#wi-fi').is(':checked');
+                var tv = $('#tv').is(':checked');
+                var enSuiteBathroom = $('#en-suite-bathroom').is(':checked');
+                $('.room-category').each(function() {
+                    var room = $(this);
+                    if (wiFi && !room.data('wi-fi')) {
+                        room.hide();
+                    } else if (tv && !room.data('tv')) {
+                        room.hide();
+                    } else if (enSuiteBathroom && !room.data('en-suite-bathroom')) {
+                        room.hide();
+                    } else {
+                        room.show();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

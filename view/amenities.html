@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities List Screens</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .amenities-container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .facility-explorer {
+            margin-top: 20px;
+        }
+        .service-directory {
+            margin-top: 20px;
+        }
+        .operating-hours {
+            margin-top: 20px;
+        }
+        .tab-content {
+            padding: 20px;
+        }
+        .filter-button {
+            margin-bottom: 10px;
+        }
+        .amenity-card {
+            margin-bottom: 10px;
+        }
+        .amenity-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .amenity-card .card-body {
+            padding: 10px;
+        }
+        .amenity-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .amenity-card .card-text {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="amenities-container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="facility-explorer-tab" data-bs-toggle="tab" data-bs-target="#facility-explorer" type="button" role="tab" aria-controls="facility-explorer" aria-selected="true">Facility Explorer</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="service-directory-tab" data-bs-toggle="tab" data-bs-target="#service-directory" type="button" role="tab" aria-controls="service-directory" aria-selected="false">Service Directory</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="operating-hours-tab" data-bs-toggle="tab" data-bs-target="#operating-hours" type="button" role="tab" aria-controls="operating-hours" aria-selected="false">Operating Hours</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="facility-explorer" role="tabpanel" aria-labelledby="facility-explorer-tab">
+                <h2>Facility Explorer</h2>
+                <div class="filter-button">
+                    <button class="btn btn-primary" data-filter="pool">Pool</button>
+                    <button class="btn btn-primary" data-filter="spa">Spa</button>
+                    <button class="btn btn-primary" data-filter="gym">Gym</button>
+                </div>
+                <div class="row" id="amenity-list">
+                    <div class="col-md-4">
+                        <div class="amenity-card" data-type="pool">
+                            <img src="https://via.placeholder.com/300" alt="Pool">
+                            <div class="card-body">
+                                <h5 class="card-title">Pool</h5>
+                                <p class="card-text">Our outdoor pool is open from 8am to 8pm.</p>
+                                <p class="card-text">Availability: <span class="text-success">Available</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="amenity-card" data-type="spa">
+                            <img src="https://via.placeholder.com/300" alt="Spa">
+                            <div class="card-body">
+                                <h5 class="card-title">Spa</h5>
+                                <p class="card-text">Our spa is open from 9am to 7pm.</p>
+                                <p class="card-text">Availability: <span class="text-success">Available</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="amenity-card" data-type="gym">
+                            <img src="https://via.placeholder.com/300" alt="Gym">
+                            <div class="card-body">
+                                <h5 class="card-title">Gym</h5>
+                                <p class="card-text">Our gym is open 24/7.</p>
+                                <p class="card-text">Availability: <span class="text-success">Available</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="service-directory" role="tabpanel" aria-labelledby="service-directory-tab">
+                <h2>Service Directory</h2>
+                <ul>
+                    <li>Room Service</li>
+                    <li>Concierge</li>
+                    <li>Tour Desk</li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="operating-hours" role="tabpanel" aria-labelledby="operating-hours-tab">
+                <h2>Operating Hours</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Amenity</th>
+                            <th>Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pool</td>
+                            <td>8am - 8pm</td>
+                        </tr>
+                        <tr>
+                            <td>Spa</td>
+                            <td>9am - 7pm</td>
+                        </tr>
+                        <tr>
+                            <td>Gym</td>
+                            <td>24/7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTab a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+            $('.filter-button button').on('click', function() {
+                var filter = $(this).data('filter');
+                $('#amenity-list .amenity-card').hide();
+                $('#amenity-list .amenity-card[data-type="' + filter + '"]').show();
+            });
+        });
+    </script>
+</body>
+</html>

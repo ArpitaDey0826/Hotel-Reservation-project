@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .filter-panel {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .filter-panel .form-group {
+            margin-bottom: 20px;
+        }
+        .filter-panel label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .results-list {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .results-list .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .results-list .result-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Reservation</h1>
+        <input type="text" class="search-bar" id="search-query" placeholder="Type query...">
+        <div class="filter-panel">
+            <h2>Filter by:</h2>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <select id="location">
+                    <option value="all">All</option>
+                    <option value="new-york">New York</option>
+                    <option value="los-angeles">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price-range">Price Range:</label>
+                <input type="range" id="price-range" min="0" max="500" value="200">
+                <span id="price-range-value">$200</span>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <select id="rating">
+                    <option value="all">All</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" id="apply-filters">Apply Filters</button>
+        </div>
+        <div class="results-list">
+            <h2>Results:</h2>
+            <div id="results-container">
+            
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const searchQuery = document.getElementById('search-query');
+        const locationSelect = document.getElementById('location');
+        const priceRangeInput = document.getElementById('price-range');
+        const priceRangeValueSpan = document.getElementById('price-range-value');
+        const ratingSelect = document.getElementById('rating');
+        const applyFiltersButton = document.getElementById('apply-filters');
+        const resultsContainer = document.getElementById('results-container');
+
+        
+        const data = [
+            { id: 1, name: 'Hotel A', location: 'New York', price: 150, rating: 4 },
+            { id: 2, name: 'Hotel B', location: 'Los Angeles', price: 200, rating: 3 },
+            { id: 3, name: 'Hotel C', location: 'Chicago', price: 100, rating: 2 },
+            { id: 4, name: 'Hotel D', location: 'New York', price: 250, rating: 5 },
+            { id: 5, name: 'Hotel E', location: 'Los Angeles', price: 180, rating: 4 },
+        ];
+
+    
+        function displayResults(results) {
+            resultsContainer.innerHTML = '';
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `
+                    <h3>${result.name}</h3>
+                    <p>Location: ${result.location}</p>
+                    <p>Price: $${result.price}</p>
+                    <p>Rating: ${result.rating} Stars</p>
+                `;
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+
+        applyFiltersButton.addEventListener('click', () => {
+            const location = locationSelect.value;
+            const priceRange = priceRangeInput.value;
+            const rating = ratingSelect.value;
+            const filteredResults = data.filter(item => {
+                if (location !== 'all' && item.location.toLowerCase() !== location.toLowerCase()) return false;
+                if (item.price > priceRange) return false;
+                if (rating !== 'all' && item.rating < parseInt(rating)) return false;
+                return true;
+            });
+            displayResults(filteredResults);
+        });
+
+      
+        searchQuery.addEventListener('input', () => {
+            const query = searchQuery.value.toLowerCase();
+            const filteredResults = data.filter(item => {
+                return item.name.toLowerCase().indexOf(query) !== -1;
+            });
+            displayResults(filteredResults);
+        });
+
+     
+        priceRangeInput.addEventListener('input', () => {
+            priceRangeValueSpan.textContent = `$${priceRangeInput.value}`;
+        });
+
+       
+        displayResults(data);
+    </script>
+</body>
+</html>

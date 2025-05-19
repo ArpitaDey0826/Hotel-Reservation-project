@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel Reservation - Role Access</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Hotel Reservation - Role Access Control</h1>
+
+    <div class="role-selector">
+      <label for="role">Simulate Logged-in Role:</label>
+      <select id="role" onchange="updateUI()">
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="User">User</option>
+      </select>
+    </div>
+
+    <nav id="navigation">
+      <ul>
+        <li data-role="Admin">Permission Settings</li>
+        <li data-role="Admin">Role Assignment</li>
+        <li data-role="Editor">Edit Bookings</li>
+        <li data-role="User">View Bookings</li>
+        <li data-role="All">Profile</li>
+      </ul>
+    </nav>
+
+    <div class="admin-panel" id="admin-panel">
+      <h2>Admin Panel - Assign Roles</h2>
+      <table>
+        <tr><th>Username</th><th>Current Role</th><th>Assign New Role</th></tr>
+        <tr>
+          <td>Alice</td>
+          <td>Editor</td>
+          <td>
+            <select>
+              <option>Admin</option>
+              <option>Editor</option>
+              <option>User</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Bob</td>
+          <td>User</td>
+          <td>
+            <select>
+              <option>Admin</option>
+              <option>Editor</option>
+              <option>User</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
