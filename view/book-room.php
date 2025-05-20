@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Room</title>
-    <link rel="stylesheet" href="../assets/css/book-room.css">
+    <link rel="stylesheet" href="../Assets/css/book-room.css">
 </head>
 <body>
     <form method = "POST">
@@ -43,7 +43,7 @@
         <a class="back-button" href="index.php">Back</a>
     </div>
     </form>
-    <script src="../assets/js/book-room.js"></script>
+    <script src="../Assets/js/book-room.js"></script>
 </body>
 </html>
 <?php

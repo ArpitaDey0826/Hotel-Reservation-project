@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review System</title>
-    <link rel="stylesheet" href="../assets/css/review-system.css">
+    <link rel="stylesheet" href="../Assets/css/review-system.css">
 </head>
 <body>
     <form method = "POST">
@@ -50,7 +50,7 @@
         </div>
     </div>
     </form>
-    <script src="../assets/js/review-system.js"></script>
+    <script src="../Assets/js/review-system.js"></script>
 </body>
 </html>
 <?php

@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billing Summary</title>
-    <link rel="stylesheet" href="../assets/css/billing-summary.css">
+    <link rel="stylesheet" href="../Assets/css/billing-summary.css">
 </head>
 <body>
     <form method = "POST">
@@ -32,7 +32,7 @@
         <a class="back-button" href="index.php">Back</a>
     </div>
     </form>
-    <script src="../assets/js/billing-summary.js"></script>
+    <script src="../Assets/js/billing-summary.js"></script>
 </body>
 </html>
 <?php

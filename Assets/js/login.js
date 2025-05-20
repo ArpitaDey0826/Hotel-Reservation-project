@@ -1,26 +1,33 @@
-function validateLogin() {
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    let isValid = true;
+<?php
+session_start();
+$email = $password = '';
+$emailError = $passwordError = $loginError = $loginSuccess = '';
 
-    document.getElementById('email-error').style.display = 'none';
-    document.getElementById('password-error').style.display = 'none';
-    document.getElementById('login-error').style.display = 'none';
-    document.getElementById('login-success').style.display = 'none';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById('email-error').style.display = 'block';
-        isValid = false;
-    }
-    if (!password) {
-        document.getElementById('password-error').style.display = 'block';
-        isValid = false;
+    // Validate email
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailError = 'Please enter a valid email address.';
     }
 
-    if (isValid) {
-        document.getElementById('login-success').style.display = 'block';
-    } else {
-        document.getElementById('login-error').textContent = 'Invalid email or password.';
-        document.getElementById('login-error').style.display = 'block';
+    // Validate password
+    if (empty($password)) {
+        $passwordError = 'Please enter your password.';
+    }
+
+    // If no validation errors
+    if (empty($emailError) && empty($passwordError)) {
+        // Replace this with actual database check
+        if ($email === "admin@example.com" && $password === "admin123") {
+            $_SESSION['status'] = 'loggedin';
+            $loginSuccess = 'Login successful!';
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $loginError = 'Invalid email or password.';
+        }
     }
 }
+?>

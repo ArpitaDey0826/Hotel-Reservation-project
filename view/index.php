@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Reservation System - Landing Page</title>
-    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../Assets/css/index.css">
 </head>
 
 <body>
@@ -48,6 +48,32 @@
                     <p>Submit ratings, comments, and filter reviews by traveler type.</p>
                 </div>
                 
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Explore Our Features</h2>
+            <div class="nav-grid">
+                <div class="nav-card">
+                    <a href="hotel types.html">Room Types</a>
+                    <p>View room categories, compare amenities, and explore 360° virtual tours.</p>
+                </div>
+                <div class="nav-card">
+                    <a href="calender.html">Availability Calendar</a>
+                    <p>Check available rooms, seasonal pricing, and modify your stay duration in real time.</p>
+                </div>
+                <div class="nav-card">
+                    <a href="guest.html">Guest Profiles</a>
+                    <p>Manage preferences, view past stays, and track loyalty rewards.</p>
+                </div>
+                <div class="nav-card">
+                    <a href="amenities.html">Amenities List</a>
+                    <p>Filter by spa, gym, or pool; view details and operating hours.</p>
+                </div>
+                <div class="nav-card">
+                    <a href="Housekeeping.html">Housekeeping Status</a>
+                    <p>Get real-time room readiness, report issues, and track cleaning progress.</p>
+                </div>
             </div>
         </div>
         <div class="footer">

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Bookings</title>
-    <link rel="stylesheet" href="../assets/css/group-bookings.css">
+    <link rel="stylesheet" href="../Assets/css/group-bookings.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 
     </form>
 
-    <script src="../assets/js/group-bookings.js"></script>
+    <script src="../Assets/js/group-bookings.js"></script>
 </body>
 
 </html>
