@@ -1,35 +1,40 @@
 function validateSignup() {
-    const email = document.getElementById('email').value.trim();
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
     let isValid = true;
 
+    // Hide all error messages initially
     document.getElementById('email-error').style.display = 'none';
     document.getElementById('password-error').style.display = 'none';
     document.getElementById('confirm-password-error').style.display = 'none';
     document.getElementById('signup-error').style.display = 'none';
-    document.getElementById('signup-success').style.display = 'none';
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Use HTML5 built-in email validity check
+    if (!emailInput.checkValidity()) {
         document.getElementById('email-error').style.display = 'block';
         isValid = false;
     }
-    if (email === 'admin@hotel.com') {
+
+    // Prevent admin email usage
+    if (email.toLowerCase() === 'admin@hotel.com') {
         document.getElementById('signup-error').textContent = 'This email is reserved for admin use.';
         document.getElementById('signup-error').style.display = 'block';
         isValid = false;
     }
+
+    // Password length check
     if (!password || password.length < 6) {
         document.getElementById('password-error').style.display = 'block';
         isValid = false;
     }
+
+    // Password match check
     if (password !== confirmPassword) {
         document.getElementById('confirm-password-error').style.display = 'block';
         isValid = false;
     }
 
-    if (isValid) {
-        document.getElementById('signup-success').style.display = 'block';
-        document.querySelectorAll('input').forEach(el => el.value = '');
-    }
+    return isValid;
 }

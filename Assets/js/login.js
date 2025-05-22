@@ -1,33 +1,37 @@
-<?php
-session_start();
-$email = $password = '';
-$emailError = $passwordError = $loginError = $loginSuccess = '';
+function validateLogin() {
+    let isValid = true;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+    // Get input values
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    // Validate email
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailError = 'Please enter a valid email address.';
+    // Get span error elements
+    const emailError = document.getElementById("email-error");
+    const passwordEmptyError = document.getElementById("password-error-empty");
+    const passwordLengthError = document.getElementById("password-error-length");
+
+    // Clear all error messages
+    emailError.textContent = "";
+    passwordEmptyError.textContent = "";
+    passwordLengthError.textContent = "";
+
+    //Validate email
+    if (email === "") {
+        emailError.textContent = "Please enter your email.";
+        isValid = false;
+    } else if (!email.includes("@") || !email.includes(".")) {
+        emailError.textContent = "Email must contain '@' and '.'.";
+        isValid = false;
     }
 
     // Validate password
-    if (empty($password)) {
-        $passwordError = 'Please enter your password.';
+    if (password === "") {
+        passwordEmptyError.textContent = "Please enter your password.";
+        isValid = false;
+    } else if (password.length < 8) {
+        passwordLengthError.textContent = "Password must be at least 8 characters.";
+        isValid = false;
     }
 
-    // If no validation errors
-    if (empty($emailError) && empty($passwordError)) {
-        // Replace this with actual database check
-        if ($email === "admin@example.com" && $password === "admin123") {
-            $_SESSION['status'] = 'loggedin';
-            $loginSuccess = 'Login successful!';
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $loginError = 'Invalid email or password.';
-        }
-    }
+    return isValid;
 }
-?>

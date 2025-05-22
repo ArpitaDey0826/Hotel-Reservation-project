@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="../Assets/css/signup.css">
 </head>
 <body>
-    <form method = "POST">
+    <form method="POST" action="../Controller/signupCheck.php" onsubmit="return validateSignup()">
         <div class="container">
-        <h2>Sign Up</h2>
-        <div id="signup-success" class="success">Signed up successfully!</div>
-        <div id="signup-error" class="error"></div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        <div id="email-error" class="error">Please enter a valid email address.</div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-        <div id="password-error" class="error">Password must be at least 6 characters.</div>
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" required>
-        <div id="confirm-password-error" class="error">Passwords do not match.</div>
-        <button onclick="validateSignup()">Sign Up</button>
-        <p><a href="login.html">Already have an account? Login</a></p>
-    </div>
+            <h2>Sign Up</h2>
+            <div id="signup-error" class="error" style="display: none;"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="email-error" class="error" style="display: none;">Please enter a valid email address.</div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-error" class="error" style="display: none;">Password must be at least 6 characters.</div>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <div id="confirm-password-error" class="error" style="display: none;">Passwords do not match.</div>
+
+            <button type="submit">Sign Up</button>
+            <p><a href="login.html">Already have an account? Login</a></p>
+        </div>
     </form>
     <script src="../Assets/js/signup.js"></script>
 </body>
