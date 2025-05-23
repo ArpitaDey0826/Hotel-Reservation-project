@@ -1,34 +1,36 @@
 <?php
 session_start();
+require_once '../model/user_model.php'; // Adjust the path if needed
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data directly, no validation
+if (isset($_POST['submit'])) {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm-password'] ?? ''; // Not used here, but received
+    $confirm_password = $_POST['confirm-password'] ?? '';
 
-    // Connect to DB
-    $con = mysqli_connect('127.0.0.1', 'root', '', 'hotel');
-    if (!$con) {
-        die("Database connection failed: " . mysqli_connect_error());
-    }
-
-    // Insert user (no password hashing, no validation)
-    $sql = "INSERT INTO signup (s_email, s_password) VALUES ('$email', '$password')";
-
-    if (mysqli_query($con, $sql)) {
-        $_SESSION['status'] = "Signed up successfully!";
-        header('Location: ../view/login.html');
-        exit();
-    } else {
-        $_SESSION['register_errors'] = ["Registration failed: " . mysqli_error($con)];
+    // Password match check
+    if ($password !== $confirm_password) {
+        $_SESSION['register_errors'] = ["Passwords do not match"];
         header('Location: ../view/signup.html');
         exit();
     }
 
-    mysqli_close($con);
+    $result = registerUser($email, $password);
+
+    if ($result === "exists") {
+        $_SESSION['register_errors'] = ["Email already registered"];
+        header('Location: ../view/signup.html');
+        exit();
+    } elseif ($result === "success") {
+        $_SESSION['status'] = "Signed up successfully!";
+        header('Location: ../view/login.html');
+        exit();
+    } else {
+        $_SESSION['register_errors'] = ["Registration failed"];
+        header('Location: ../view/signup.html');
+        exit();
+    }
 } else {
-    // Not a POST request
+    // Form was not submitted using the "submit" button
     header('Location: ../view/signup.html');
     exit();
 }
