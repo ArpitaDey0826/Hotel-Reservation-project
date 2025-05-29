@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_COOKIE['status'])){
+    if(isset($_SESSION['status'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../Assets/css/review-system.css">
 </head>
 <body>
-    <form method = "POST">
+    <form method="POST">
         <div class="container">
         <h2>Review System</h2>
 
@@ -19,7 +19,7 @@
             <h3>Submit a Review</h3>
             <div id="review-success" class="success">Review submitted successfully!</div>
             <label for="rating">Star Rating:</label>
-            <select id="rating" >
+            <select id="rating" name="rating" required>
                 <option value="">Select rating</option>
                 <option value="1">1 Star</option>
                 <option value="2">2 Stars</option>
@@ -29,10 +29,10 @@
             </select>
             <div id="rating-error" class="error">Please select a rating.</div>
             <label for="comment">Comment:</label>
-            <textarea id="comment" rows="4" ></textarea>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
             <div id="comment-error" class="error">Please enter a comment (5-500 characters).</div>
             <label for="traveler-type">Traveler Type:</label>
-            <select id="traveler-type" >
+            <select id="traveler-type" name="traveler-type" required>
                 <option value="">Select traveler type</option>
                 <option value="solo">Solo</option>
                 <option value="couple">Couple</option>
@@ -57,5 +57,4 @@
     }else{
         header('location: login.html');
     }
-
 ?>

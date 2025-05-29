@@ -30,11 +30,7 @@
                 <div class="nav-card">
                     <a href="group-bookings.php">Group Bookings</a>
                     <p>Reserve multiple rooms and coordinate event spaces.</p>
-                </div>
-                <div class="nav-card">
-                    <a href="billing-summary.php">Billing Summary</a>
-                    <p>View charges, split payments, and generate receipts.</p>
-                </div>                
+                </div>               
                 <div class="nav-card">
                     <a href="cancellation-policy.php">Cancellation Policy</a>
                     <p>View terms and cancel bookings.</p>

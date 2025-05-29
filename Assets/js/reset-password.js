@@ -12,7 +12,6 @@ function resetPassword() {
     resetSuccess.style.display = "none";
     resetError.style.display = "none";
 
-    // Validation
     if (password.length < 6 || password.length > 20) {
         passwordError.style.display = "block";
         return false;
@@ -23,7 +22,6 @@ function resetPassword() {
         return false;
     }
 
-    // If everything is valid
     resetSuccess.style.display = "block";
-    return false; // Prevent actual form submission for now
+    return false; 
 }

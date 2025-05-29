@@ -3,7 +3,7 @@ function getConnection() {
     $host = "127.0.0.1";
     $user = "root";
     $pass = "";
-    $db   = "hotel";
+    $db   = "hotel2";
 
     $con = mysqli_connect($host, $user, $pass, $db);
 

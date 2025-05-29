@@ -24,8 +24,7 @@
       <p><a href="signup.html">Don't have an account? Sign up</a></p>
       <p><a href="forgot-password.html">Forgot your password?</a></p>
 
-      <?php
-      // Show login error message if set in session
+      <?php      
       session_start();
       if (isset($_SESSION['login_error'])) {
           echo '<p style="color:red;">' . $_SESSION['login_error'] . '</p>';

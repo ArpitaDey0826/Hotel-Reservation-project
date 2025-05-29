@@ -36,8 +36,6 @@ header p {
     padding: 2rem;
     border-radius: 10px;
     margin: 2rem;
-    /* Removed white background */
-    /* Optional: subtle shadow for contrast */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 

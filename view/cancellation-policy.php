@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_COOKIE['status'])){
+    if(isset($_SESSION['status'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">

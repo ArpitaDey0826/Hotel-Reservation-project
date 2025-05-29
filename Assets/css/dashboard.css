@@ -26,6 +26,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 .action-grid {
     display: grid;
@@ -44,6 +45,26 @@ body {
 }
 .action-btn:hover {
     background-color: #0056b3;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.data-table th {
+    background-color: #007bff;
+    color: #fff;
+}
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.data-table tr:hover {
+    background-color: #f1f1f1;
 }
 .footer {
     text-align: center;
@@ -72,5 +93,11 @@ body {
     }
     .action-grid {
         grid-template-columns: 1fr;
+    }
+    .data-table {
+        font-size: 0.9em;
+    }
+    .data-table th, .data-table td {
+        padding: 8px;
     }
 }

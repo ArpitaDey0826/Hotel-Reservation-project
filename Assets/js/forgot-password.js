@@ -6,7 +6,9 @@ function validateReset() {
     document.getElementById('forgot-error').style.display = 'none';
     document.getElementById('forgot-success').style.display = 'none';
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    let atPos = email.indexOf('@');
+    let dotPos = email.lastIndexOf('.');
+    if (!email || atPos <= 0 || dotPos <= atPos + 1 || dotPos === email.length - 1) {
         document.getElementById('email-error').style.display = 'block';
         isValid = false;
     }
