@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
 
-            var bookingsBody = document.querySelector('#room-bookings-table tbody');
+            var bookingsBody = document.getElementById('room-bookings-body');
+
             bookingsBody.innerHTML = '';
             if (data.bookings && data.bookings.length > 0) {
                 for (var i = 0; i < data.bookings.length; i++) {
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 bookingsBody.innerHTML = '<tr><td colspan="6">No room bookings found.</td></tr>';
             }
 
-            var groupBody = document.querySelector('#group-bookings-table tbody');
+            var groupBody = document.querySelector('group-bookings-body');
             groupBody.innerHTML = '';
             if (data.groupBookings && data.groupBookings.length > 0) {
                 for (var j = 0; j < data.groupBookings.length; j++) {
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 groupBody.innerHTML = '<tr><td colspan="8">No group bookings found.</td></tr>';
             }
 
-            var billingBody = document.querySelector('#billing-summaries-table tbody');
+            var billingBody = document.querySelector('billing-summaries-body');
             billingBody.innerHTML = '';
             if (data.billingSummaries && data.billingSummaries.length > 0) {
                 for (var k = 0; k < data.billingSummaries.length; k++) {

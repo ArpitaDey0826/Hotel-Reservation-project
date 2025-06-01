@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $rate_type = $_POST['rate-type'] ?? '';
 
     if (empty($guest_name) || empty($room_type) || empty($check_in_date) || empty($check_out_date) || empty($rate_type)) {
-        header('Location: bookroom.html?error=empty');
+        header('Location: ../view/book-room.php?error=empty');
         exit();
     }
 
@@ -24,11 +24,12 @@ if (isset($_POST['submit'])) {
         header('Location: ../view/billing-summary.php');
         exit();
     } else {
-        header('Location: bookroom.php?error=failed');
+        echo "Booking Failed. Reason: $result";
+        header('Location: ../view/book-room.php?error=failed');
         exit();
     }
 } else {
-    header('Location: bookroom.php?error=invalid');
+    header('Location: ../view/book-room.php?error=invalid');
     exit();
 }
 ?>

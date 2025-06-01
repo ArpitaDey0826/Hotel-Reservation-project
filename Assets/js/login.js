@@ -1,31 +1,39 @@
 function validateLogin() {
-    let isValid = true;
-
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
-
     const emailError = document.getElementById("email-error");
-    const passwordEmptyError = document.getElementById("password-error-empty");
-    const passwordLengthError = document.getElementById("password-error-length");
+    const passwordError = document.getElementById("password-error");
+    const loginError = document.getElementById("login-error");
 
-    emailError.textContent = "";
-    passwordEmptyError.textContent = "";
-    passwordLengthError.textContent = "";
+    emailError.style.display = "none";
+    passwordError.style.display = "none";
+    loginError.style.display = "none";
+
+    let isValid = true;
 
     if (email === "") {
-        emailError.textContent = "Please enter your email.";
+        emailError.textContent = "Email is required.";
+        emailError.style.display = "block";
         isValid = false;
-    } else if (!email.includes("@") || !email.includes(".")) {
-        emailError.textContent = "Email must contain '@' and '.'.";
+    } else if (!email.includes('@') || !email.includes('.') || email.startsWith('@') || email.endsWith('.')) {
+        emailError.textContent = "Please enter a valid email address.";
+        emailError.style.display = "block";
         isValid = false;
     }
 
     if (password === "") {
-        passwordEmptyError.textContent = "Please enter your password.";
+        passwordError.textContent = "Password is required.";
+        passwordError.style.display = "block";
         isValid = false;
-    } else if (password.length < 8) {
-        passwordLengthError.textContent = "Password must be at least 8 characters.";
+    } else if (password.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters long.";
+        passwordError.style.display = "block";
         isValid = false;
+    }
+
+    if (!isValid) {
+        loginError.textContent = "Please provide valid email and password!!";
+        loginError.style.display = "block";
     }
 
     return isValid;

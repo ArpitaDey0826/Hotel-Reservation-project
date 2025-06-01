@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="../Assets/css/concierge-requests.css">
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="../Controller/process_concierge_request.php" onsubmit="return validateConciergeRequest()">
         <div class="container">
         <h2>Concierge Requests</h2>
         <div id="concierge-success" class="success">Request submitted successfully!</div>
 
         <h3>Submit a Request</h3>
-        <label for="booking-id">Booking ID:</label>
-        <input type="text" id="booking-id" name="booking-id" required>
-        <div id="booking-id-error" class="error">Please enter a valid Booking ID (e.g., BK12345 or GB12345).</div>
+        <label for="booking-id">Booking Name:</label>
+        <input type="text" id="booking-id" name="booking-id" >
+        <div id="booking-id-error" class="error">Please enter a valid Booking Name</div>
         <label for="service">Service/Experience:</label>
-        <select id="service" name="service" required>
+        <select id="service" name="service" >
             <option value="">Select a service</option>
             <optgroup label="Room Service">
                 <option value="breakfast">Breakfast ($20)</option>
@@ -41,9 +41,9 @@
         </select>
         <div id="service-error" class="error">Please select a service.</div>
         <label for="request-details">Additional Details:</label>
-        <textarea id="request-details" name="request-details" rows="4" required></textarea>
+        <textarea id="request-details" name="request-details" rows="4" ></textarea>
         <div id="request-details-error" class="error">Please provide request details.</div>
-        <button onclick="validateConciergeRequest()">Submit Request</button>
+        <button type="submit" name="submit">Submit Request</button>
         <a class="back-button" href="index.php">Back</a>
 
         <h3>Request History</h3>
@@ -56,6 +56,6 @@
 </html>
 <?php
     }else{
-        header('location: login.html');
+        header('location: login.php');
     }
 ?>

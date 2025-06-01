@@ -7,8 +7,9 @@ function loginUser($email, $password) {
     $result = mysqli_query($con, $sql);
     $count = mysqli_num_rows($result);
     mysqli_close($con);
-    return $count === 1 ? "success" : "fail";
+    return $count === 1;  
 }
+
 
 function registerUser($email, $password) {
     $con = getConnection();
@@ -28,9 +29,9 @@ function registerUser($email, $password) {
     }
 }
 
-function insertConciergeRequest($booking_id, $service, $request_details) {
+function insertConciergeRequest( $service, $request_details, $booking_id) {
     $con = getConnection();
-    $sql = "INSERT INTO concierge_requests (booking_id, service, request_details) VALUES ('$booking_id', '$service', '$request_details')";
+    $sql = "INSERT INTO conciergerequest ( service_experience, additional_details, booking_name) VALUES ('$service', '$request_details', '$booking_id')";
     if (mysqli_query($con, $sql)) {
         mysqli_close($con);
         return "success";
@@ -42,7 +43,7 @@ function insertConciergeRequest($booking_id, $service, $request_details) {
 
 function insertReview($rating, $comment, $traveler_type) {
     $con = getConnection();
-    $sql = "INSERT INTO reviews (rating, comment, traveler_type) VALUES ('$rating', '$comment', '$traveler_type')";
+    $sql = "INSERT INTO reviewsystem (star_rating, r_comment, traveler_type) VALUES ('$rating', '$comment', '$traveler_type')";
     if (mysqli_query($con, $sql)) {
         mysqli_close($con);
         return "success";
@@ -55,8 +56,8 @@ function insertReview($rating, $comment, $traveler_type) {
 function insertBillingSummary($booking_id, $email, $split_count, $amount, $method, $payer) {
     $con = getConnection();
 
-    $sql = "INSERT INTO billingsummery (booking_id, email_receipt, split_number, split_amount, split_method, payer_name) 
-            VALUES ('$booking_id', '$email', '$split_count', '$amount', '$method', '$payer')";
+    $sql = "INSERT INTO billingsummery (booking_id, email_receipt, split_number, split_amount, split_method, payer_name)
+            VALUES ('$booking_id', '$email', $split_count, $amount, '$method', '$payer')";
 
     if (mysqli_query($con, $sql)) {
         mysqli_close($con);
@@ -75,13 +76,14 @@ function insertRoomBooking($guest_name, $room_type, $check_in_date, $check_out_d
     $con = getConnection();
     $sql = "INSERT INTO bookroom (guest_name, room_type, check_in_date, check_out_date, rate_type) 
             VALUES ('$guest_name', '$room_type', '$check_in_date', '$check_out_date', '$rate_type')";
+
     if (mysqli_query($con, $sql)) {
         mysqli_close($con);
         return "success";
     } else {
         $error = mysqli_error($con);
         mysqli_close($con);
-        return "DB error: $error";
+        return "DB error: $error";  
     }
 }
 
@@ -102,6 +104,26 @@ function insertGroupBooking($group_name, $contact_email, $room_number, $check_in
         return "DB error: $error";
     }
 }
+
+function searchRoomBookings($query) {
+    $con = getConnection(); 
+
+    $safeQuery = mysqli_real_escape_string($con, $query);
+
+    $sql = "SELECT * FROM room_bookings WHERE guest_name LIKE '%$safeQuery%'";
+    $result = mysqli_query($con, $sql);
+
+    $filtered = [];
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $filtered[] = $row;
+        }
+    }
+
+    mysqli_close($con);
+    return $filtered;
+}
+
 function getRoomBookings() {
     $con = getConnection();
     $sql = "SELECT * FROM bookroom";

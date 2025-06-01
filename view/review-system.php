@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="../Assets/css/review-system.css">
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="../Controller/process_review.php" onsubmit="retrun validateReview()">
         <div class="container">
         <h2>Review System</h2>
 
-        <div id="submission-form">
+        <div id="submission-form" >
             <h3>Submit a Review</h3>
             <div id="review-success" class="success">Review submitted successfully!</div>
             <label for="rating">Star Rating:</label>
@@ -40,7 +40,7 @@
                 <option value="business">Business</option>
             </select>
             <div id="traveler-type-error" class="error">Please select a traveler type.</div>
-            <button onclick="validateReview()">Submit Review</button>
+            <button type="submit" name="submit" onclick="validateReview()">Submit Review</button>
             <a class="back-button" href="index.php">Back</a>
         </div>
 
@@ -55,6 +55,6 @@
 </html>
 <?php
     }else{
-        header('location: login.html');
+        header('location: login.php');
     }
 ?>

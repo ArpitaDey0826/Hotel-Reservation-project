@@ -23,12 +23,10 @@ function validateGroupBooking() {
         isValid = false;
     }
 
-    let atPos = email.indexOf('@');
-    let dotPos = email.lastIndexOf('.');
-    if (!email || atPos <= 0 || dotPos <= atPos + 1 || dotPos === email.length - 1) {
-        document.getElementById('email-error').style.display = 'block';
-        isValid = false;
-    }
+    if (!contactEmail || contactEmail.indexOf('@') === -1 || contactEmail.indexOf('.') === -1 || contactEmail.indexOf('@') > contactEmail.lastIndexOf('.')) {
+    document.getElementById('contact-email-error').style.display = 'block';
+    isValid = false;
+}
 
     if (!roomNumber || isNaN(roomNumber) || parseInt(roomNumber) < 1) {
         document.getElementById('room-number-error').style.display = 'block';

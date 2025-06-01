@@ -18,7 +18,7 @@
             <h1>Welcome to Our Hotel Reservation System</h1>
             <p>Manage your stay with ease and convenience</p>
             <div class="auth-links">
-                <a href="login.html">Log Out</a>
+                <a href="login.php">Log Out</a>
             </div>
         </div>
         <div class="container">
@@ -82,7 +82,7 @@
 </html>
 <?php
     }else{
-        header('location: login.html');
+        header('location: login.php');
     }
 
 ?>

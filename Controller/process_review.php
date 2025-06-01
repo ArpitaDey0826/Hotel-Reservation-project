@@ -3,7 +3,7 @@ session_start();
 require_once '../Model/user_model.php';
 
 if (!isset($_SESSION['status'])) {
-    require_once '../Model/user_model.php';
+    header('Location: ../view/login.php');
     exit();
 }
 

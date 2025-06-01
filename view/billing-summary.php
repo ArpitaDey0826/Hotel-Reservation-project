@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../Assets/css/billing-summary.css">
 </head>
 <body>
-    <form method="POST" onsubmit="return validateReceipt();">
+    <form method="POST" action="../Controller/process_billing_summary.php"  onsubmit="return validateReceipt();">
         <div class="container">
             <h2>Billing Summary</h2>
             <div id="billing-success" class="success">Receipt generated successfully!</div>
@@ -42,8 +42,8 @@
             <label for="payer">Payer Name:</label>
             <input type="text" id="payer" name="payer" placeholder="Payer Name" >
 
-            <button type="submit">Generate Receipt</button>
-            <a class="back-button" href="index.php">Back</a>
+            <button type="submit" name="submit">Generate Receipt</button>
+            <a class="back-button" onclick="history.back()">Back</a>
         </div>
     </form>
     <script src="../Assets/js/billing-summary.js"></script>
@@ -51,6 +51,6 @@
 </html>
 <?php
     } else {
-        header('location: login.html');
+        header('location: login.php');
     }
 ?>

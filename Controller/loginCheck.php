@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../model/user_model.php';
+require_once '../Model/user_model.php';
 
-if (isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -20,10 +20,10 @@ if (isset($_POST['submit'])) {
         exit();
     } else {
         $_SESSION['login_error'] = "Invalid email or password!";
-        header('Location: ../view/login.html');
+        header('Location: ../view/login.php');
         exit();
     }
 } else {
-    header('Location: ../view/login.html');
+    header('Location: ../view/login.php');
     exit();
 }

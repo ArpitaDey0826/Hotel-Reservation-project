@@ -3,7 +3,7 @@ session_start();
 require_once '../Model/user_model.php';
 
 if (!isset($_SESSION['status'])) {
-    header('location: login.html');
+    header('location: ../view/login.php');
     exit();
 }
 
@@ -13,20 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $request_details = $_POST['request-details'] ?? '';
 
     if (empty($booking_id) || empty($service) || empty($request_details)) {
-        echo json_encode(['status' => 'error', 'message' => 'All fields are required']);
-        exit();
-    }
+    echo "All fields are required.";
+    exit();
+}
 
-    $result = insertConciergeRequest($booking_id, $service, $request_details);
+    $result = insertConciergeRequest( $service, $request_details, $booking_id);
     if ($result === 'success') {
         header('Location: ../view/index.php');
         exit();
     } else {
-        header('Location: bookroom.php?error=failed');
+        header('Location: ../view/concierge-requests.php?error=failed');
         exit();
     }
 } else {
-    header('Location: bookroom.php?error=invalid');
+    header('Location: ../view/concierge-requests.php?error=invalid');
     exit();
 }
 ?>

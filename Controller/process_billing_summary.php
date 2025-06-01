@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../view/index.php?message=success');
         exit();
     } else {
+        echo $result;
         header('Location: ../view/billing-summary.php?error=failed');
         exit();
     }
